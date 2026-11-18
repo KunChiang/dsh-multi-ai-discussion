@@ -28,12 +28,42 @@
 
 ## 安装
 
+这个包没有发布到 npm，从 GitHub 直接安装。三种方式任选其一。
+
+### 方式一：Plugin Manager（推荐）
+
+打开 **Plugins → Add plugin**，在输入框里填 GitHub 地址：
+
+```
+github:KunChiang/dsh-multi-ai-discussion
+```
+
+点 **Install**。安装完成后侧栏出现「多 AI 讨论」。
+
+### 方式二：`dsh` CLI
+
 ```bash
-# 在 DSH 中安装本地目录（会链接这个 checkout，改动后重装即可生效）
+dsh plugin --profile <profile> add github:KunChiang/dsh-multi-ai-discussion
+```
+
+`--profile` 指定要装进哪个 profile：Web 版用 `web`，自定义 profile 用其名字。
+
+> **Desktop 用户注意**：`desktop` 是 Desktop 应用保留的 profile，CLI 会拒绝直接操作它
+> （报错提示先打开一次 Desktop 初始化 profile，并完全退出）。请改用方式一，
+> 在 GUI 的 Plugin Manager 里安装。
+
+### 方式三：本地目录（开发用）
+
+```bash
+git clone git@github.com:KunChiang/dsh-multi-ai-discussion.git
 dsh plugin --profile <profile> add /abs/path/to/dsh-multi-ai-discussion
 ```
 
-或者在 Plugin Manager 里安装同目录下打包出的 `.tgz`。安装后 `cordis.patch.yml` 会插入一行：
+适合改代码的场景：改动后重新执行 `node scripts/build.mjs`，再卸载重装同一个目录即可。
+`github:` / `git+ssh://` / `https://` 三种地址形式 pnpm 都能解析，最终都会记成
+`github:KunChiang/dsh-multi-ai-discussion`。
+
+安装后 profile 的 `cordis.patch.yml` 会插入一行：
 
 ```yaml
 - insert:
@@ -81,18 +111,21 @@ node scripts/build.mjs   # esbuild 打包 client，并把 host 复制到 lib/
 
 `react` 由浏览器模块表提供，不打进包里。
 
+## 更新与生效
+
+`lib/` 是构建产物，随仓库提交，所以直接安装不用装依赖、不用构建。
+改源码后的流程：
+
+```bash
+node scripts/build.mjs                          # 重新打包 lib/
+dsh plugin --profile <profile> remove dsh-multi-ai-discussion
+dsh plugin --profile <profile> add github:KunChiang/dsh-multi-ai-discussion
+```
+
+**注意**：DSH 的浏览器模块图在启动时缓存，替换同一个包之后需要重启 Harness，
+页面才会加载新的 `lib/client.js`；Host 半的路由则会随安装立即生效。
+只刷新页面不够。
+
 ## License
 
 MIT
-
-## 更新与生效
-
-本插件已安装在桌面版 profile（`desktop`）。修改源码后：
-
-```bash
-node scripts/build.mjs      # 重新打包 lib/
-```
-
-然后在 Plugin Manager 里卸载再安装同一个目录。**DSH 的浏览器模块图在启动时缓存**，
-所以替换安装后需要重启 Harness（或让 client 构建产物流入新的模块代），
-页面才会加载新的 `lib/client.js`；Host 半的路由则会随安装立即生效。
