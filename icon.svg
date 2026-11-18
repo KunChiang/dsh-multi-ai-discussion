@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="128" height="128" role="img" aria-label="Multi-AI discussion">
+  <defs>
+    <linearGradient id="bg" x1="18" y1="12" x2="112" y2="118" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#3f6df6"/>
+      <stop offset="1" stop-color="#6f3ff0"/>
+    </linearGradient>
+    <linearGradient id="glow" x1="34" y1="28" x2="96" y2="104" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#ffffff" stop-opacity=".28"/>
+      <stop offset="1" stop-color="#ffffff" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+  <rect width="128" height="128" rx="30" fill="url(#bg)"/>
+  <rect width="128" height="128" rx="30" fill="url(#glow)"/>
+  <g fill="none" stroke="#ffffff" stroke-width="4.6" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M28 42h34a8 8 0 0 1 8 8v16a8 8 0 0 1-8 8H44l-12 10v-10h-4a8 8 0 0 1-8-8V50a8 8 0 0 1 8-8Z" fill="#ffffff" fill-opacity=".16"/>
+    <path d="M72 52h24a8 8 0 0 1 8 8v14a8 8 0 0 1-8 8h-2v9l-11-9h-11a8 8 0 0 1-8-8V60a8 8 0 0 1 8-8Z" fill="#ffffff" fill-opacity=".28"/>
+  </g>
+  <g fill="#ffffff">
+    <circle cx="42" cy="58" r="3.4"/>
+    <circle cx="54" cy="58" r="3.4"/>
+    <circle cx="66" cy="58" r="3.4"/>
+    <circle cx="84" cy="67" r="3.2" fill-opacity=".85"/>
+    <circle cx="95" cy="67" r="3.2" fill-opacity=".85"/>
+  </g>
+</svg>

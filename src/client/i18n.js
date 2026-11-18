@@ -1,0 +1,151 @@
+export const NS = 'multi-ai-discussion'
+
+export const zh = {
+  nav: '多 AI 讨论',
+  title: '多 AI 讨论',
+  titleTag: '一起想，更靠谱',
+  subtitle: '选几个模型各自作答、匿名互评，再由主持人汇总成一份最终答案',
+  back: '返回',
+  backHint: '回到会话（Esc）',
+
+  questionLabel: '要讨论的需求或问题',
+  questionPlaceholder: '例如：为一个内部管理工具设计权限模型，要支持按项目和角色授权，并说明迁移方案。',
+  extraLabel: '补充前提（可选）',
+  extraHint: '会作为同一份背景交给所有模型',
+  extraPlaceholder: '技术栈、团队规模、时间或成本约束……',
+
+  modelsLabel: '参与讨论的模型',
+  modelsHint: '列表来自你已配置的模型；建议 2–4 个，所有模型会并发请求',
+  modelsLoading: '正在读取模型列表…',
+  modelsRetry: '重新读取',
+  modelsClear: '清空',
+  modelsSelected: '已选',
+  modelsEmpty: '还没有可用的对话模型。请先在「设置 → 模型」里配置一个 provider，再回来讨论。',
+  modelsFailed: '模型列表读取失败',
+
+  roundsLabel: '讨论轮次',
+  rounds1: '快速 · 各自作答',
+  rounds2: '标准 · 作答 + 互评',
+  rounds3: '深度 · 作答 + 互评 + 汇总',
+  roundsHint1: '每个模型独立回答，直接对比不同思路。',
+  roundsHint2: '第二轮模型会看到彼此的答案，指出错误与遗漏后修订自己的回答。',
+  roundsHint3: '在互评之后，由你指定的汇总者合并分歧，输出唯一一份最终答案。',
+
+  chairLabel: '汇总者',
+  chairHint: '它负责把多份答案合并成最终结论，通常选最稳的那个',
+  expert: '专家',
+  you: '自选',
+
+  start: '开始讨论',
+  stop: '停止',
+  restart: '再讨论一次',
+  copy: '复制结论',
+  copied: '已复制',
+
+  editSetup: '修改设定',
+  collapseSetup: '收起设定',
+  needTwo: '至少选择 2 个模型，讨论才成立',
+  needQuestion: '先写下要讨论的问题',
+
+  phaseAnswer: '第一轮 · 独立作答',
+  phaseCritique: '第二轮 · 交叉评审',
+  phaseSynthesis: '最终 · 汇总结论',
+  phaseAnswerHint: '各模型互不可见，避免互相带偏',
+  phaseCritiqueHint: '匿名互评：指出别人的错误，再修订自己',
+  phaseSynthesisHint: '合并分歧，给出唯一一份可执行的结论',
+
+  statusRunning: '讨论中',
+  statusDone: '已完成',
+  statusStopped: '已停止',
+  statusError: '出错',
+  statusIdle: '待开始',
+
+  thinking: '思考中…',
+  failed: '失败',
+  chars: '字',
+  tokens: 'tokens',
+
+  emptyTitle: '多一双眼睛，多一个角度',
+  emptyBody: '单个模型容易在细节上想当然；让它们互相挑错，最终结论通常更稳。',
+  empty1: '各自独立作答，互不影响',
+  empty2: '匿名互评，指出错误与遗漏',
+  empty3: '主持人合并分歧，产出最终方案',
+
+  errorPrefix: '请求失败：',
+  noSelection: '还没有选择模型',
+}
+
+export const en = {
+  nav: 'Multi-AI discussion',
+  title: 'Multi-AI discussion',
+  titleTag: 'think together',
+  subtitle: 'Several models answer on their own, critique each other anonymously, then one merges the result',
+  back: 'Back',
+  backHint: 'Back to the conversation (Esc)',
+
+  questionLabel: 'Requirement or question',
+  questionPlaceholder: 'For example: design a permission model for an internal admin tool that supports project and role based access, and describe the migration.',
+  extraLabel: 'Constraints (optional)',
+  extraHint: 'Shared as background with every model',
+  extraPlaceholder: 'Stack, team size, timeline or cost limits…',
+
+  modelsLabel: 'Models in this discussion',
+  modelsHint: 'Taken from the models you configured; 2–4 works best, they are called concurrently',
+  modelsLoading: 'Reading the model catalog…',
+  modelsRetry: 'Reload',
+  modelsClear: 'Clear',
+  modelsSelected: 'Selected',
+  modelsEmpty: 'No chat model is available yet. Configure a provider under Settings → Models first.',
+  modelsFailed: 'Could not read the model catalog',
+
+  roundsLabel: 'Rounds',
+  rounds1: 'Quick · answers only',
+  rounds2: 'Standard · answers + critique',
+  rounds3: 'Deep · answers + critique + synthesis',
+  roundsHint1: 'Each model answers independently so the approaches can be compared.',
+  roundsHint2: 'In round two each model sees the others, points out errors, then revises its own answer.',
+  roundsHint3: 'After the critique, your chosen chair merges the disagreements into one final answer.',
+
+  chairLabel: 'Chair',
+  chairHint: 'Merges the answers into the final conclusion',
+  expert: 'Expert',
+  you: 'Custom',
+
+  start: 'Start discussion',
+  stop: 'Stop',
+  restart: 'Discuss again',
+  copy: 'Copy conclusion',
+  copied: 'Copied',
+
+  editSetup: 'Edit setup',
+  collapseSetup: 'Hide setup',
+  needTwo: 'Pick at least two models',
+  needQuestion: 'Write the question first',
+
+  phaseAnswer: 'Round 1 · Independent answers',
+  phaseCritique: 'Round 2 · Cross critique',
+  phaseSynthesis: 'Final · Synthesis',
+  phaseAnswerHint: 'Models cannot see each other, so they stay independent',
+  phaseCritiqueHint: 'Anonymous peer review, then each model revises itself',
+  phaseSynthesisHint: 'Disagreements merged into one actionable conclusion',
+
+  statusRunning: 'Running',
+  statusDone: 'Finished',
+  statusStopped: 'Stopped',
+  statusError: 'Failed',
+  statusIdle: 'Not started',
+
+  thinking: 'Thinking…',
+  failed: 'Failed',
+  chars: 'chars',
+  tokens: 'tokens',
+
+  emptyTitle: 'One more pair of eyes',
+  emptyBody: 'A single model trusts its own assumptions; models that challenge each other are usually more accurate.',
+  empty1: 'Independent answers, no cross-talk',
+  empty2: 'Anonymous critique of errors and gaps',
+  empty3: 'A chair merges the disagreements',
+
+  errorPrefix: 'Request failed: ',
+  noSelection: 'No model selected',
+}

@@ -1,0 +1,7 @@
+# 多 AI 讨论 —— 组合包补丁。
+#
+# 安装后把下面这一行挂进 profile 的 Loader；Host 半负责调用各模型并汇总，
+# Client 半在侧栏「多 AI 讨论」面板里做选择与展示。
+- insert:
+    - id: multi-ai-discussion
+      name: 'dsh-multi-ai-discussion'
