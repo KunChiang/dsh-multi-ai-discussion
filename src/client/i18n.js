@@ -34,7 +34,6 @@ export const zh = {
   chairLabel: '汇总者',
   chairHint: '它负责把多份答案合并成最终结论，通常选最稳的那个',
   expert: '专家',
-  you: '自选',
 
   start: '开始讨论',
   stop: '停止',
@@ -60,16 +59,30 @@ export const zh = {
   statusError: '出错',
   statusIdle: '待开始',
 
-  thinking: '思考中…',
   failed: '失败',
-  chars: '字',
-  tokens: 'tokens',
 
   emptyTitle: '多一双眼睛，多一个角度',
   emptyBody: '单个模型容易在细节上想当然；让它们互相挑错，最终结论通常更稳。',
   empty1: '各自独立作答，互不影响',
   empty2: '匿名互评，指出错误与遗漏',
   empty3: '主持人合并分歧，产出最终方案',
+
+  settingsTag: '配置',
+  settingsSubtitle: '这里只做配置：选好模型与轮次，然后在对话输入框下方开始讨论',
+  howToTitle: '怎么用',
+  howTo1: '在下面的模型列表里勾选 2–4 个参与讨论的模型',
+  howTo2: '回到任意会话，在输入框里写下话题或目标',
+  howTo3: '点输入框下方的「多 AI 讨论 →」，成员各自的思考会在对话区里分栏实时输出',
+  chairAuto: '自动（选第一项）',
+
+  'dock.title': '多 AI 讨论',
+  'dock.needTopic': '先在输入框里写下要讨论的话题或目标',
+  'dock.needTwo': '至少选 2 个模型（点左侧打开设置）',
+  'dock.full': '最多同时参与 {max} 个模型',
+  'dock.settingsHint': '更多设置见侧栏「多 AI 讨论」',
+  'dock.start': '开始讨论',
+  'dock.startHint': '用输入框里的话题开始',
+  'dock.close': '关闭结果',
 
   errorPrefix: '请求失败：',
   noSelection: '还没有选择模型',
@@ -109,7 +122,6 @@ export const en = {
   chairLabel: 'Chair',
   chairHint: 'Merges the answers into the final conclusion',
   expert: 'Expert',
-  you: 'Custom',
 
   start: 'Start discussion',
   stop: 'Stop',
@@ -135,16 +147,30 @@ export const en = {
   statusError: 'Failed',
   statusIdle: 'Not started',
 
-  thinking: 'Thinking…',
   failed: 'Failed',
-  chars: 'chars',
-  tokens: 'tokens',
 
   emptyTitle: 'One more pair of eyes',
   emptyBody: 'A single model trusts its own assumptions; models that challenge each other are usually more accurate.',
   empty1: 'Independent answers, no cross-talk',
   empty2: 'Anonymous critique of errors and gaps',
   empty3: 'A chair merges the disagreements',
+
+  settingsTag: 'settings',
+  settingsSubtitle: 'Configuration only: pick models and rounds, then start from below the composer',
+  howToTitle: 'How to use',
+  howTo1: 'Pick 2–4 models below to take part',
+  howTo2: 'In any conversation, type the topic or goal in the composer',
+  howTo3: 'Click "Multi-AI discussion →" below the composer; members stream into columns here',
+  chairAuto: 'Automatic (first entry)',
+
+  'dock.title': 'Multi-AI discussion',
+  'dock.needTopic': 'Type the topic or goal in the composer first',
+  'dock.needTwo': 'Pick at least 2 models (open settings on the left)',
+  'dock.full': 'At most {max} models at once',
+  'dock.settingsHint': 'More settings under Multi-AI discussion in the sidebar',
+  'dock.start': 'Discuss',
+  'dock.startHint': 'Start with the composer text',
+  'dock.close': 'Close result',
 
   errorPrefix: 'Request failed: ',
   noSelection: 'No model selected',

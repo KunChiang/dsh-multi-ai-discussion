@@ -649,6 +649,400 @@ export const STYLES = `
   .mad-grid { grid-template-columns: 1fr; }
   .mad-title small { display: none; }
 }
+
+/* ---------- 输入框下方控制条（会话 composer.dock） ---------- */
+.mad-dock {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  margin-top: 6px;
+  font-size: 12px;
+  color: var(--dsw-alias-label-secondary);
+}
+.mad-dockRow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+}
+.mad-dockToggle {
+  appearance: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  height: 26px;
+  padding: 0 10px;
+  border: 1px solid var(--dsw-alias-border-l1);
+  border-radius: 999px;
+  background: var(--dsw-alias-bg-layer-2);
+  color: var(--dsw-alias-label-secondary);
+  font: inherit;
+  font-size: 11.5px;
+  cursor: pointer;
+  transition: color .15s ease, border-color .15s ease, background-color .15s ease;
+}
+.mad-dockToggle:hover { color: var(--dsw-alias-label-primary); border-color: var(--dsw-alias-border-l2); }
+.mad-dockToggle.running {
+  border-color: color-mix(in srgb, var(--dsw-alias-brand-primary) 45%, transparent);
+  color: var(--dsw-alias-label-primary);
+}
+.mad-dockDot {
+  width: 6px;
+  height: 6px;
+  flex: none;
+  border-radius: 50%;
+  background: var(--dsw-alias-state-idle-primary);
+}
+.mad-dockToggle.running .mad-dockDot {
+  background: var(--dsw-alias-brand-primary);
+  animation: mad-pulse 1.1s ease-in-out infinite;
+}
+.mad-dockCount {
+  min-width: 14px;
+  padding: 0 4px;
+  border-radius: 5px;
+  background: color-mix(in srgb, var(--dsw-alias-brand-primary) 12%, transparent);
+  color: var(--dsw-alias-brand-primary);
+  font-size: 10.5px;
+  font-variant-numeric: tabular-nums;
+  text-align: center;
+}
+.mad-dockToggle.running .mad-dockCount {
+  background: color-mix(in srgb, var(--dsw-alias-brand-primary) 18%, transparent);
+}
+.mad-dockCaret { font-size: 9px; opacity: .7; }
+.mad-dockAction {
+  appearance: none;
+  height: 26px;
+  padding: 0 11px;
+  border: 1px solid color-mix(in srgb, var(--dsw-alias-brand-primary) 40%, transparent);
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--dsw-alias-brand-primary) 10%, transparent);
+  color: var(--dsw-alias-brand-primary);
+  font: inherit;
+  font-size: 11.5px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color .15s ease, opacity .15s ease;
+}
+.mad-dockAction:hover:not(:disabled) { background: color-mix(in srgb, var(--dsw-alias-brand-primary) 16%, transparent); }
+.mad-dockAction:disabled { opacity: .45; cursor: not-allowed; }
+.mad-dockAction.stop {
+  border-color: color-mix(in srgb, var(--dsw-alias-state-error-primary) 40%, transparent);
+  background: transparent;
+  color: var(--dsw-alias-state-error-primary);
+}
+.mad-dockHint {
+  font-size: 11px;
+  color: var(--dsw-alias-state-warn-primary);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.mad-dockPanel {
+  margin-top: 8px;
+  padding: 12px;
+  border: 1px solid var(--dsw-alias-border-l1);
+  border-radius: 12px;
+  background: var(--dsw-alias-bg-layer-1);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, .12);
+  max-height: 320px;
+  overflow: auto;
+}
+.mad-dockPanelHead {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+.mad-dockGroups { display: flex; flex-direction: column; gap: 10px; }
+.mad-dockPanelFoot {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-top: 10px;
+  padding-top: 10px;
+  border-top: 1px solid var(--dsw-alias-border-l1);
+}
+.mad-seg.small { padding: 2px; }
+.mad-seg.small button { height: 24px; font-size: 11px; padding: 0 9px; flex: 0 0 auto; }
+
+/* ---------- 对话界面里的分栏讨论面板（输入框正上方） ---------- */
+.mad-inline {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 8px;
+  border: 1px solid var(--dsw-alias-border-l1);
+  border-radius: 12px;
+  background: var(--dsw-alias-bg-layer-1);
+  overflow: hidden;
+}
+.mad-inlineHead {
+  flex: none;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 10px;
+  min-width: 0;
+  background: var(--dsw-alias-bg-layer-2);
+}
+.mad-inlineTitle {
+  flex: none;
+  font-size: 11.5px;
+  font-weight: 600;
+  color: var(--dsw-alias-label-primary);
+}
+.mad-inlineTopic {
+  min-width: 0;
+  font-size: 11.5px;
+  color: var(--dsw-alias-label-secondary);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.mad-inlineMeta {
+  flex: none;
+  font-size: 10.5px;
+  font-variant-numeric: tabular-nums;
+  color: var(--dsw-alias-label-secondary);
+}
+.mad-inlineScroll {
+  max-height: min(46vh, 440px);
+  overflow: auto;
+  padding: 10px 12px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.mad-inlineScroll::-webkit-scrollbar { width: 9px; }
+.mad-inlineScroll::-webkit-scrollbar-thumb {
+  border: 2px solid transparent;
+  border-radius: 8px;
+  background-clip: padding-box;
+  background-color: var(--dsw-alias-border-l1);
+}
+.mad-inlinePhase { display: flex; flex-direction: column; gap: 7px; }
+.mad-inlinePhaseLabel {
+  font-size: 10.5px;
+  font-weight: 600;
+  letter-spacing: .05em;
+  text-transform: uppercase;
+  color: var(--dsw-alias-label-secondary);
+}
+.mad-inlineFinal {
+  padding: 10px 12px;
+  border: 1px solid color-mix(in srgb, var(--dsw-alias-brand-primary) 32%, var(--dsw-alias-border-l1));
+  border-radius: 10px;
+  background: color-mix(in srgb, var(--dsw-alias-brand-primary) 5%, var(--dsw-alias-bg-base));
+  font-size: 12.5px;
+  line-height: 1.68;
+}
+
+/* ---------- 对话区的讨论视图 ---------- */
+.mad-discRoot {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-height: 0;
+  overflow: hidden;
+  color: var(--dsw-alias-label-primary);
+  background: var(--dsw-alias-bg-base);
+}
+.mad-discHead {
+  flex: none;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 20px;
+  border-bottom: 1px solid var(--dsw-alias-border-l1);
+}
+.mad-discMark {
+  display: grid;
+  place-items: center;
+  width: 30px;
+  height: 30px;
+  flex: none;
+  border-radius: 9px;
+  color: var(--dsw-alias-brand-primary);
+  background: color-mix(in srgb, var(--dsw-alias-brand-primary) 12%, transparent);
+}
+.mad-discCopy { min-width: 0; }
+.mad-discTitleRow { display: flex; align-items: center; gap: 7px; }
+.mad-discTitle {
+  margin: 0;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: .01em;
+}
+.mad-discBadge {
+  padding: 0 5px;
+  border-radius: 5px;
+  background: color-mix(in srgb, var(--dsw-alias-brand-primary) 12%, transparent);
+  color: var(--dsw-alias-brand-primary);
+  font-size: 10.5px;
+  font-variant-numeric: tabular-nums;
+}
+.mad-discTopic {
+  margin: 2px 0 0;
+  max-width: 620px;
+  font-size: 11.5px;
+  line-height: 1.45;
+  color: var(--dsw-alias-label-secondary);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.mad-discTimer {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  font-variant-numeric: tabular-nums;
+  color: var(--dsw-alias-label-secondary);
+}
+.mad-discActions { display: inline-flex; gap: 6px; }
+.mad-discScroll {
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow: auto;
+  padding: 16px 20px 26px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.mad-discScroll::-webkit-scrollbar { width: 10px; }
+.mad-discScroll::-webkit-scrollbar-thumb {
+  border: 3px solid transparent;
+  border-radius: 8px;
+  background-clip: padding-box;
+  background-color: var(--dsw-alias-border-l1);
+}
+.mad-discEmpty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 48px 20px;
+  text-align: center;
+}
+.mad-discPhase { display: flex; flex-direction: column; gap: 9px; }
+.mad-discPhaseHead { display: flex; align-items: baseline; gap: 9px; flex-wrap: wrap; }
+.mad-discPhaseTitle { font-size: 12px; font-weight: 600; letter-spacing: .01em; }
+.mad-discGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 9px;
+  align-items: start;
+}
+.mad-discCard {
+  display: flex;
+  flex-direction: column;
+  min-height: 96px;
+  border: 1px solid var(--dsw-alias-border-l1);
+  border-radius: 12px;
+  background: var(--dsw-alias-bg-layer-1);
+  overflow: hidden;
+}
+.mad-discCard.running { border-color: color-mix(in srgb, var(--dsw-alias-brand-primary) 45%, var(--dsw-alias-border-l1)); }
+.mad-discCard.failed { border-color: color-mix(in srgb, var(--dsw-alias-state-error-primary) 40%, transparent); }
+.mad-discCardHead {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 9px 11px;
+  border-bottom: 1px solid var(--dsw-alias-border-l1);
+  background: var(--dsw-alias-bg-layer-2);
+}
+.mad-discCardName {
+  font-size: 12px;
+  font-weight: 600;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.mad-discCardProvider {
+  font-size: 10.5px;
+  color: var(--dsw-alias-label-secondary);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 38%;
+}
+.mad-discCardMeta {
+  margin-left: auto;
+  font-size: 10.5px;
+  font-variant-numeric: tabular-nums;
+  color: var(--dsw-alias-label-secondary);
+}
+.mad-discCardBody {
+  flex: 1 1 auto;
+  padding: 11px 12px 13px;
+  font-size: 12.5px;
+  line-height: 1.66;
+  max-height: 260px;
+  overflow: auto;
+}
+.mad-discCardBody::-webkit-scrollbar { width: 8px; }
+.mad-discCardBody::-webkit-scrollbar-thumb {
+  border: 2px solid transparent;
+  border-radius: 6px;
+  background-clip: padding-box;
+  background-color: var(--dsw-alias-border-l1);
+}
+.mad-discCardError { color: var(--dsw-alias-state-error-primary); font-size: 12px; line-height: 1.55; word-break: break-word; }
+.mad-discFinal {
+  border: 1px solid color-mix(in srgb, var(--dsw-alias-brand-primary) 35%, var(--dsw-alias-border-l1));
+  border-radius: 14px;
+  background: linear-gradient(180deg, color-mix(in srgb, var(--dsw-alias-brand-primary) 6%, var(--dsw-alias-bg-layer-1)), var(--dsw-alias-bg-layer-1));
+  overflow: hidden;
+}
+.mad-discFinalHead {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  flex-wrap: wrap;
+  padding: 11px 14px;
+  border-bottom: 1px solid color-mix(in srgb, var(--dsw-alias-brand-primary) 22%, var(--dsw-alias-border-l1));
+}
+.mad-discFinalBody {
+  padding: 14px 16px 18px;
+  font-size: 13px;
+  line-height: 1.72;
+  max-height: 520px;
+  overflow: auto;
+}
+.mad-discFinalBody::-webkit-scrollbar { width: 8px; }
+.mad-discFinalBody::-webkit-scrollbar-thumb {
+  border: 2px solid transparent;
+  border-radius: 6px;
+  background-clip: padding-box;
+  background-color: var(--dsw-alias-border-l1);
+}
+
+/* ---------- 设置页的用法说明 ---------- */
+.mad-howTo {
+  padding: 13px 15px;
+  border: 1px solid var(--dsw-alias-border-l1);
+  border-radius: 12px;
+  background: var(--dsw-alias-bg-layer-1);
+}
+.mad-howToTitle { font-size: 12.5px; font-weight: 600; margin-bottom: 7px; }
+.mad-howToList {
+  margin: 0;
+  padding-left: 1.35em;
+  font-size: 12px;
+  line-height: 1.75;
+  color: var(--dsw-alias-label-secondary);
+}
+
+@container mad (max-width: 760px) {
+  .mad-discGrid { grid-template-columns: 1fr; }
+  .mad-discScroll { padding: 13px 14px 22px; }
+  .mad-discHead { padding: 10px 14px; }
+  .mad-discTopic { max-width: 100%; }
+}
+
 /* ---------- 输入框内的快捷入口（不在 .mad-root 内部） ---------- */
 .mad-composerBtn {
   display: inline-flex;
